@@ -1,0 +1,4 @@
+terraform.tfstate
+terraform.tfstate.backup
+
+*.py[co]
