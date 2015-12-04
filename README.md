@@ -13,4 +13,20 @@ Terraform or AWS.
 Right now this provisions _everything_, including it's own VPC and related
 networking accoutrements. It does not handle setting up a Docker Registry. It
 does not do anything about attaching other AWS services (e.g. RDS) to a
-container. It also doesn't handle "deployments" of an ECS service.
+container.
+
+## Deploying
+
+In addition to the Terraform modules, there is a script for doing deployments to
+ECS.
+
+To execute a deployment:
+
+```console
+$ # Push a container to your docker registry
+$ python deploy/ecs-deploy.py --cluster=<cluster> --service=<service> --image=<image>
+```
+
+It will then update the image being used by that service's task. ECS will handle
+updating the running containers. (Be aware that you must have as many EC2
+instances in the cluster as 2x the number of running tasks for your service.)
