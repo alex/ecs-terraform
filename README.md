@@ -24,7 +24,7 @@ To execute a deployment:
 
 ```console
 $ # Push a container to your docker registry
-$ python deploy/ecs-deploy.py --cluster=<cluster> --service=<service> --image=<image>
+$ python deploy/ecs-deploy.py deploy --cluster=<cluster> --service=<service> --image=<image>
 ```
 
 It will then update the image being used by that service's task. ECS will handle
