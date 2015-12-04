@@ -44,6 +44,7 @@ resource "aws_security_group" "load_balancers" {
     description = "Allows all traffic"
     vpc_id = "${aws_vpc.main.id}"
 
+    # TODO: do we need to allow ingress besides TCP 80 and 443?
     ingress {
         from_port = 0
         to_port = 0
