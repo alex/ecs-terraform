@@ -63,7 +63,7 @@ resource "aws_security_group" "load_balancers" {
 
 resource "aws_security_group" "ecs" {
     name = "ecs"
-    description = "Allows all traffi"
+    description = "Allows all traffic"
     vpc_id = "${aws_vpc.main.id}"
 
     # TODO: remove this and replace with a bastion host for SSHing into
