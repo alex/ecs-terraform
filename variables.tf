@@ -30,6 +30,23 @@ variable "amis" {
     }
 }
 
+
+variable "autoscale_min" {
+    default = "1"
+    description = "Minimum autoscale (number of EC2)"
+}
+
+variable "autoscale_max" {
+    default = "10"
+    description = "Maximum autoscale (number of EC2)"
+}
+
+variable "autoscale_desired" {
+    default = "4"
+    description = "Desired autoscale (number of EC2)"
+}
+
+
 variable "instance_type" {
     default = "t2.micro"
 }

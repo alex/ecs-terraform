@@ -98,10 +98,9 @@ resource "aws_ecs_cluster" "main" {
 resource "aws_autoscaling_group" "ecs-cluster" {
     availability_zones = ["${var.availability_zone}"]
     name = "ECS ${var.ecs_cluster_name}"
-    # TODO: move to variables
-    min_size = 4
-    max_size = 4
-    desired_capacity = 4
+    min_size = "${var.autoscale_min}"
+    max_size = "${var.autoscale_max}"
+    desired_capacity = "${var.autoscale_desired}"
     health_check_type = "EC2"
     launch_configuration = "${aws_launch_configuration.ecs.name}"
     vpc_zone_identifier = ["${aws_subnet.main.id}"]
