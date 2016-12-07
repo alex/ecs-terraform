@@ -11,25 +11,20 @@ variable "region" {
     default = "us-east-1"
 }
 
-# TODO: support multiple availability zones, and default to it.
-variable "availability_zone" {
-    description = "The availability zone"
-    default = "us-east-1a"
+variable "cidr_block" {
+  description = "The cidr block of the VPC you would like to create"
+  default     = "10.10.0.0/16"
+}
+
+variable "az_count" {
+  description = "Number of AZs to cover in a given AWS region"
+  default     = "2"
 }
 
 variable "ecs_cluster_name" {
     description = "The name of the Amazon ECS cluster."
     default = "main"
 }
-
-variable "amis" {
-    description = "Which AMI to spawn. Defaults to the AWS ECS optimized images."
-    # TODO: support other regions.
-    default = {
-        us-east-1 = "ami-ddc7b6b7"
-    }
-}
-
 
 variable "autoscale_min" {
     default = "1"
@@ -42,16 +37,20 @@ variable "autoscale_max" {
 }
 
 variable "autoscale_desired" {
-    default = "4"
+    default = "2"
     description = "Desired autoscale (number of EC2)"
 }
-
 
 variable "instance_type" {
     default = "t2.micro"
 }
 
-variable "ssh_pubkey_file" {
-    description = "Path to an SSH public key"
-    default = "~/.ssh/id_rsa.pub"
+variable "key_name" {
+  description = "Name of AWS pub key pair for intances"
+  default = "some-key-in-aws"
+}
+
+variable "admin_cidr_ingress" {
+  description = "CIDR to allow tcp/22 ingress to EC2 instance"
+  default = "0.0.0.0/0"
 }
