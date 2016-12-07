@@ -1,7 +1,7 @@
 resource "aws_elb" "test-http" {
     name = "test-http-elb"
     security_groups = ["${aws_security_group.load_balancers.id}"]
-    subnets = ["${aws_subnet.main.id}"]
+    subnets = ["${aws_subnet.main.*.id}"]
 
     listener {
         lb_protocol = "http"
